@@ -73,6 +73,8 @@ monster, door, player['location'] = get_locations()
 logging.info('monster: {}; door: {}; player: {}'.format(
     monster, door, player['location']
 ))
+# IF you look at the log:
+# INFO:root:monster: (0, 1); door: (2, 1); player: (1, 0)
 
 while True:
     moves = get_moves(player['location'])
