@@ -2,10 +2,10 @@
 old_nametags = ['laura', 'dustin', 'rachel']
 new_nametags = []
 for nametag in old_nametags:
-  new_nametags.append(nametag.capitalize())
+    new_nametags.append(nametag.capitalize())
 
 # list comprehension syntax template
-#new_nametags = [expression for temporary_variable in original_iterable]
+# new_nametags = [expression for temporary_variable in original_iterable]
 
 ########
 
@@ -13,13 +13,13 @@ for nametag in old_nametags:
 old_banner = "welcome"
 new_banner = ""
 for letter in old_banner:
-  new_banner += letter.upper()
+    new_banner += letter.upper()
 
 # list comprehension syntax template
-#new_banner = [expression for temporary_variable in original_iterable]
+# new_banner = [expression for temporary_variable in original_iterable]
 
 ########
 
 # print statements
-#print(new_nametags)
-#print(new_banner)
+# print(new_nametags)
+# print(new_banner)
