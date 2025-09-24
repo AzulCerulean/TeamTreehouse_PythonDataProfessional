@@ -4,7 +4,9 @@
 # [1904, 1908, 1912, 1916, 1920, 1924, 1928, 1932, 1936, 1940, 1944, 1948,
 # 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000]
 
-leap_years = """write your comprehension here"""
+leap_years = [year for year in range(1900, 2001, 4)]
+# Solution:
+# leap_years = [year for year in range(1901, 2001) if year%4==0]
 
 print("Challenge 1 - Leap years between 1900 and 2000:")
 print(leap_years)
@@ -12,7 +14,7 @@ print(leap_years)
 ########
 
 # Challenge 2 - List only the Simpsons and add “Simpson” to the name
-# Expected output
+# Expected output:
 # ['Homer Simpson', 'Marge Simpson', 'Bart Simpson', 'Lisa Simpson',
 # 'Maggie Simpson']
 
@@ -21,7 +23,10 @@ characters = ['Homer', 'Apu', 'Bob', 'Marge', 'Milhouse', 'Edna', 'Krusty',
               'Bart', 'Moe', 'Lisa', 'Ned', 'Lenny', 'Ralph', 'Maggie',
               'Nelson', 'Barney']
 
-the_simpsons = """write your comprehension here"""
+the_simpsons = [f"{name} Simpson" for name in simpsons]
+# Solution:
+# the_simpsons = [f"{characters} Simpson" for name in characters
+#                 if name in simpsons]
 
 print("\nChallenge 2 - The Simpsons are: ")
 print(the_simpsons)
@@ -33,7 +38,9 @@ print(the_simpsons)
 # Expected output:
 # {'apple': 5, 'banana': 6, 'cherry': 6}
 words = ['apple', 'banana', 'cherry', 'kiwi', 'pear']
-word_lengths = """write your comprehension here"""
+word_lengths = {word: len(word) for word in words if len(word) >= 5}
+# Solution:
+# word_lengths = {word: len(word) for word in words if len(word)>=5}
 
 print("\nChallenge 3 - Dictionary mapping word to length, "
       "but only if the word has 5+ letters:")
@@ -48,7 +55,11 @@ print(word_lengths)
 # 'Franky': 18, 'Georgey': 14}
 ages = {'Ally': 33, 'Benny': 28, 'Caddy': 23, 'Danny': 22, 'Ely': 18,
         'Franky': 17, 'Georgey': 13}
-ages_next_year = """write your comprehension here"""
+ages_next_year = {name: age+1 if name != 'Danny' else age
+                  for (name, age) in ages.items()}
+# Solution:
+# ages_next_year = {person: age+1 if person!='Danny'
+#                   else age for (person, age) in ages.items()}
 
 print("\nChallenge 4 - Everyone's age next year:")
 print(ages_next_year)
@@ -60,7 +71,9 @@ print(ages_next_year)
 # Expected output:
 # {'e', 'i', 'o'}
 statement = "Oh, I loooooove Python!"
-vowels = """write your comprehension here"""
+vowels = {letter for letter in statement.lower() if letter in 'aeiou'}
+# Solution:
+# vowels = {letter for letter in statement.lower() if letter in 'aeiou'}
 
 print("\nChallenge 5 - Vowels in 'Oh, I loooooove Python':")
 print(vowels)
@@ -76,7 +89,9 @@ fruits = ['Tomato', 'Pomegranate', 'Mango', 'Cucumber', 'Strawberry',
 vegetables = ['Broccoli', 'Cucumber', 'Carrot', 'Zucchini', 'Tomato',
               'Beetroot']
 
-overlap = """write your comprehension here"""
+overlap = {item for item in set(fruits) & set(vegetables)}
+# Solution:
+# overlap = {food for food in fruits if food in vegetables}
 
 print("\nChallenge 6 - Foods that are both a vegetable and a fruit:")
 print(overlap)
@@ -103,7 +118,26 @@ phd_candidates = [
   {"name": "Oopsie Daisy", "score": 60}
 ]
 
-graduates = """write your comprehension here"""
+
+def format_name(title, person):
+    return f"{title} {person.get('name').split()[-1]}"
+
+
+graduates = [format_name("Professor", person)
+             if person.get('score') >= 90
+             else format_name("Doctor", person)
+             for person in phd_candidates
+             if person.get('score') >= 70]
+# Solution:
+# def format_name(honorific, candidate):
+#     return honorific + " " + candidate.get('name').split()[-1]
+
+
+# graduates = [format_name("Professor", candidate)
+#              if candidate.get('score') >= 90
+#              else format_name("Doctor", candidate)
+#              for candidate in phd_candidates
+#              if candidate.get('score') >= 70]
 
 print("\nChallenge 7 - Our new graduates:")
 print(graduates)
