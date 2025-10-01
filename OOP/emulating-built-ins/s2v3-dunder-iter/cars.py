@@ -16,12 +16,12 @@ class Car:
         self.is_moving = False
 
     def __str__(self):
-       return f'{self.make} {self.model} {self.year}'
+        return f'{self.make} {self.model} {self.year}'
 
     def use_gas(self):
         self.gas -= 50
         if self.gas <= 0:
-          return False
+            return False
         return True
 
     def stop(self):
@@ -42,6 +42,28 @@ class Car:
             self.stop()
 
 
-print(Car('Camry', 2016, 'Toyota'))
+class Dealership:
+    def __init__(self):
+        self.cars = []
 
-print(str(Car('Camry', 2016, 'Toyota')))
+    # allows to itterate a list
+    def __iter__(self):
+        yield from self.cars
+
+    def add_cars(self, car):
+        self.cars.append(car)
+
+
+car_one = Car('Model T', 1908)
+car_two = Car('Fusion', 1990)
+car_three = Car('Fiesta', 2000)
+my_dealership = Dealership()
+my_dealership.add_cars(car_one)
+my_dealership.add_cars(car_two)
+my_dealership.add_cars(car_three)
+for car in my_dealership:
+    print(car)
+
+# print(Car('Camry', 2016, 'Toyota'))
+
+# print(str(Car('Camry', 2016, 'Toyota')))
