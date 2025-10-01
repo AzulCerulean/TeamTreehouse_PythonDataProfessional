@@ -18,7 +18,7 @@ class Car:
     def use_gas(self):
         self.gas -= 50
         if self.gas <= 0:
-          return False
+            return False
         return True
 
     def stop(self):
@@ -40,6 +40,8 @@ class Car:
 
 
 car_one = Car('Model T', 1908)
+print(dir(car_one))  # prints out all methods and attributes contained so far
+# also shows all the built-in dunder methods
 car_two = Car('Phantom', 2020, 'Rolls Royce')
 
 car_one.stop()
