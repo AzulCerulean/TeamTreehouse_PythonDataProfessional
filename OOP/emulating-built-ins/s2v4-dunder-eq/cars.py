@@ -16,12 +16,15 @@ class Car:
         self.is_moving = False
 
     def __str__(self):
-       return f'{self.make} {self.model} {self.year}'
+        return f'{self.make} {self.model} {self.year}'
+
+    def __eq__(self, other):
+        return self.make == other.make and self.model == other.model
 
     def use_gas(self):
         self.gas -= 50
         if self.gas <= 0:
-          return False
+            return False
         return True
 
     def stop(self):
@@ -44,24 +47,38 @@ class Car:
 
 class Dealership:
     def __init__(self):
-       self.cars = []
+        self.cars = []
 
     def __iter__(self):
-       yield from self.cars
+        yield from self.cars
 
     def add_car(self, car):
-       self.cars.append(car)
+        self.cars.append(car)
 
 
 car_one = Car('Fusion', 2020, 'Ford')
 car_two = Car('Camry', 1994, 'Toyota')
 car_three = Car('Dakota', 2000, 'Dodge')
 
-my_dealership = Dealership()
+# my_dealership = Dealership()
 
-my_dealership.add_car(car_one)
-my_dealership.add_car(car_two)
-my_dealership.add_car(car_three)
+# my_dealership.add_car(car_one)
+# my_dealership.add_car(car_two)
+# my_dealership.add_car(car_three)
 
-for car in my_dealership:
-   print(car)
+# for car in my_dealership:
+#     print(car)
+
+if car_one == car_two:
+    print('equals')
+else:
+    print('not equal')
+# not equal
+
+car_one = Car('Model T', 2020)
+car_two = Car('Model T', 1994)
+if car_one == car_two:
+    print('equals')
+else:
+    print('not equal')
+# equals
