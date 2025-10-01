@@ -15,10 +15,13 @@ class Car:
         # to be passed in
         self.is_moving = False
 
+    def __str__(self):
+        return f'{self.make} {self.model} {self.year}'
+
     def use_gas(self):
         self.gas -= 50
         if self.gas <= 0:
-          return False
+            return False
         return True
 
     def stop(self):
@@ -39,4 +42,8 @@ class Car:
             self.stop()
 
 
-print(dir(Car('Toyota', 'Camry', 2020)))
+# print(dir(Car('Toyota', 'Camry', 2020)))
+car_one = Car('Model T', 1908)
+# print(car_one)  # <__main__.Car object at 0x10c366a50>
+print(str(car_one))  # after adding the __str__: Ford Model T 1908
+print(car_one)  # Ford Model T 1908
